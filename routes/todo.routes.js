@@ -62,6 +62,11 @@ router.get("/:todoId", async (req, res, next) => {
 router.delete("/:todoId", async (req, res, next) => {
 
   try {
+
+    // antes de borrar, vamos a hacer una verificacion de autorizacion
+    // 1. si es role que puede borrar
+    // 2. si es dueño del documento
+    // 3. si está logeado
     
     await Todo.findByIdAndDelete(req.params.todoId)
     res.json("documento borrado")
